@@ -9,7 +9,22 @@
 <body>
 
 
-
+    <script type="text/javascript" src="https://cdn.bootcss.com/iNotify/1.1.0/iNotify.min.js"></script>
+    <script type="text/javascript">
+        var iN = new iNotify({
+            effect: 'flash',
+            interval: 500,
+            message:"有消息拉!",
+            notification:{
+                title:"通知！",
+                body:''
+            }
+        });
+        iN.setFavicon(10).setTitle('新标题').notify({
+            title:"新通知",
+            body:'您有一条新消息！'
+        });
+    </script>
     <script src="https://pushjs.org/scripts/push.min.js"></script>
     <script>
 
