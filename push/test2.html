@@ -17,13 +17,14 @@
             message:"有消息拉!",
             notification:{
                 title:"通知！",
+                icon:"http://www.zcq.test.91xiangju.com/images/xiangju/commodity-house/footer_bg.png",
                 body:''
             }
         });
-//         iN.setFavicon(10).setTitle('新标题').notify({
-//             title:"新通知",
-//             body:'您有一条新消息！'
-//         });
+        iN.notify({
+            title:"新通知",
+            body:'您有一条新消息！'
+        });
     </script>
     <script src="https://pushjs.org/scripts/push.min.js"></script>
     <script>
@@ -41,7 +42,7 @@
             });
         };
 
-        demo();
+//         demo();
 
         function demo() {
             Push.create('Hello world!', {
