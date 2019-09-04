@@ -56,7 +56,8 @@
                 ctx.save();
                 ctx.drawImage(imgObjList[i],0,0,canvas.width,canvas.height);
                 ctx.restore();
-                gif.addFrame(canvas,{copy:true,delay:300})
+//                 gif.addFrame(canvas,{copy:true,delay:300})
+                gif.addFrame(ctx, {copy: true});
                 ctx.clearRect(0,0,canvas.width,canvas.height)
             }
             gif.render();
