@@ -64,12 +64,12 @@
             } else {
               renderimg.src = buildDataURL(data);
             }
-            delta = now() - startTime;
-            return logel.set('text', "Rendered " + images.length + " frame(s) at q" + gif.options.quality + " in " + (delta.toFixed(2)) + "ms");
+//             delta = now() - startTime;
+//             return logel.set('text', "Rendered " + images.length + " frame(s) at q" + gif.options.quality + " in " + (delta.toFixed(2)) + "ms");
           });
 
           gif.on('progress', function(p) {
-            return logel.set('text', "Rendering " + images.length + " frame(s) at q" + gif.options.quality + "... " + (Math.round(p * 100)) + "%");
+//             return logel.set('text', "Rendering " + images.length + " frame(s) at q" + gif.options.quality + "... " + (Math.round(p * 100)) + "%");
           });
 
           images = [];
