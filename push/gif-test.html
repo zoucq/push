@@ -58,6 +58,7 @@
           });
 
           gif.on('finished', function(blob, data) {
+              console.log('finished',blob,data)
             var delta;
               
             renderimg.src = URL.createObjectURL(blob);
