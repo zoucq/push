@@ -54,7 +54,7 @@
             for (let i=0;i<imgObjList.length;i++){
                 console.log(imgObjList[i])
                 ctx.save();
-                ctx.drawImage(imgObjList[i],0,0,canvas2.width,canvas2.height);
+                ctx.drawImage(imgObjList[i],0,0,canvas.width,canvas.height);
                 ctx.restore();
                 gif.addFrame(canvas,{copy:true,delay:300})
                 ctx.clearRect(0,0,canvas.width,canvas.height)
