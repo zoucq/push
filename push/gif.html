@@ -53,12 +53,13 @@
 
             for (let i=0;i<imgObjList.length;i++){
                 console.log(imgObjList[i])
-                ctx.save();
-                ctx.drawImage(imgObjList[i],0,0,canvas.width,canvas.height);
-                ctx.restore();
-//                 gif.addFrame(canvas,{copy:true,delay:300})
-                gif.addFrame(ctx, {copy: true});
-                ctx.clearRect(0,0,canvas.width,canvas.height)
+//                 ctx.save();
+//                 ctx.drawImage(imgObjList[i],0,0,canvas.width,canvas.height);
+//                 ctx.restore();
+// //                 gif.addFrame(canvas,{copy:true,delay:300})
+//                 gif.addFrame(ctx, {copy: true});
+//                 ctx.clearRect(0,0,canvas.width,canvas.height)
+                gif.addFrame(imgObjList[i], {delay: 1000});
             }
             gif.render();
 
