@@ -14,7 +14,7 @@
 
 </body>
 
-<script src="https://cdn.bootcss.com/gif.js/0.2.0/gif.js"></script>
+<script src="./gif.js"></script>
 <script>
     window.onload = function () {
         var oImg = document.getElementById("img");
@@ -24,7 +24,7 @@
         let gif = new GIF({
             workers: 4,
             quality: 30,
-            workerScript:'https://cdn.bootcss.com/gif.js/0.2.0/gif.worker.js'
+            workerScript:'./gif.worker.js'
             // transparent: "#fff",
             // background: '#ffffff',
         });
