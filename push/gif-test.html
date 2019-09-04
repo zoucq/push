@@ -59,11 +59,14 @@
 
           gif.on('finished', function(blob, data) {
             var delta;
-            if (blobURLSupport) {
-              renderimg.src = URL.createObjectURL(blob);
-            } else {
-              renderimg.src = buildDataURL(data);
-            }
+              
+            renderimg.src = URL.createObjectURL(blob);
+              
+//             if (blobURLSupport) {
+//               renderimg.src = URL.createObjectURL(blob);
+//             } else {
+//               renderimg.src = buildDataURL(data);
+//             }
 //             delta = now() - startTime;
 //             return logel.set('text', "Rendered " + images.length + " frame(s) at q" + gif.options.quality + " in " + (delta.toFixed(2)) + "ms");
           });
