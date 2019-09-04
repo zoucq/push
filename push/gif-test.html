@@ -77,11 +77,13 @@
             images.push(img.src);
           });
 
+           var count = 0;
           images.map(function(v,i){
             loadImage(v,function(empty, image){
                 images[i] = image;
+                count++;
                     console.log(image,images)
-                if(i==images.length-1){
+                if(count==images.length){
                     var image, j, len;
                     for (j = 0, len = images.length; j < len; j++) {
                       image = images[j];
