@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    
+    <div class="demo">
+        <div class="images">
+            <img class='original' src="http://lxfm-file.malmam.com/sie/aD0zMDAmbT1RJnVybD1kZnMlM0E3JTJDMTM1ZDExNmYzYzc0ZTUmdz0zMDA-/img.jpg" alt="">
+            <img class='original' src="http://lxfm-file.malmam.com/sie/aD0zMDAmbT1RJnVybD1kZnMlM0E4JTJDMTM1NDJkNTg5MGU1MGUmdz0zMDA-/img.jpg" alt="">
+            <img class='original' src="http://lxfm-file.malmam.com/sie/aD0zMDAmbT1RJnVybD1kZnMlM0E3JTJDMTMyZGRjNTE1OGE5Zjcmdz0zMDA-/img.jpg" alt="">
+            <img class="render">
+        </div>
+        <div class="controls">
+              <p class="info">
+                <pre>Loading...</pre>
+              </p>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.bootcss.com/gif.js/0.2.0/gif.js"></script>
+    <script>
+
+        var loadImage = function(src, callback) {
+            var img;
+            img = new Image();
+            img.crossOrigin = ''; 
+            img.onload = function() {
+                return callback(null, img);
+            };
+            img.onerror = function() {
+                return callback(new Error("Could load " + src));
+            };
+            return img.src = src;
+        };
+
+        var setupDemo = function() {
+          var delay, gif, images, logel, qslider, qvalue, ref3, renderimg, repeat, startTime;
+
+          renderimg = document.querySelector('img.render');
+
+          gif = new GIF({
+            debug: true,
+            quality: 10,
+            workerScript:'https://cdn.bootcss.com/gif.js/0.2.0/gif.worker.js'
+          });
+
+          startTime = null;
+
+          gif.on('start', function() {
+            return startTime = now();
+          });
+
+          gif.on('finished', function(blob, data) {
+            var delta;
+            if (blobURLSupport) {
+              renderimg.src = URL.createObjectURL(blob);
+            } else {
+              renderimg.src = buildDataURL(data);
+            }
+            delta = now() - startTime;
+            return logel.set('text', "Rendered " + images.length + " frame(s) at q" + gif.options.quality + " in " + (delta.toFixed(2)) + "ms");
+          });
+
+          gif.on('progress', function(p) {
+            return logel.set('text', "Rendering " + images.length + " frame(s) at q" + gif.options.quality + "... " + (Math.round(p * 100)) + "%");
+          });
+
+          images = [];
+          document.querySelectorAll('img.original').forEach(function(img) {
+            images.push(img.src);
+          });
+
+          images.map(function(v,i){
+            loadImage(v,function(empty, image){
+                images[i] = image;
+                    console.log(image,images)
+                if(i==images.length-1){
+                    var image, j, len;
+                    for (j = 0, len = images.length; j < len; j++) {
+                      image = images[j];
+                      console.log(image)
+                      gif.addFrame(image, {
+                        delay: 500,
+                        copy: true
+                      });
+                    }
+                    gif.render();
+                }
+            })
+          })
+        }
+
+
+        setupDemo()
+
+
+
+    </script>
+</body>
+</html>
